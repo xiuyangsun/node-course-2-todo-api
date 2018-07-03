@@ -9,43 +9,17 @@ var app = express();
 
 app.use(bodyParser.json());
 
-// app.post('/todos',(req,res)=>{
-//   var todo = new Todo({
-//     text:req.body.text
-//   });
-//
-//   todo.save().then((doc)=>{
-//     res.send(doc);
-//   },(err)=>{
-//     res.status(400).send(err);
-//   });
-// });
-
 app.post('/todos',(req,res)=>{
-  // var todo = new Todo({
-  //   text:"Clean home"
-  // });
-  //
-  // todo.save().then((doc)=>{
-  //   res.send(doc);
-  // },(err)=>{
-  //   res.send(err);
-  // });
-
-  var todo2 = new Todo({
-    text:'Go to sleep'
+  var todo = new Todo({
+    text:req.body.text
   });
 
-  todo2.save().then((doc)=>{
+  todo.save().then((doc)=>{
     res.send(doc);
   },(err)=>{
-    ressend(err);
+    res.status(400).send(err);
   });
 });
-
-
-
-
 
 app.listen(3000,()=>{
   console.log('Started on port 3000');
